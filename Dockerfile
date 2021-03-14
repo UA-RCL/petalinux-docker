@@ -68,11 +68,14 @@ RUN dpkg --add-architecture i386 &&  apt-get update &&  \
 
 ARG PETA_VERSION
 ARG PETA_RUN_FILE
+ARG USER_ID
+ARG GROUP_ID
 
 RUN locale-gen en_US.UTF-8 && update-locale
 
 #make a Vivado user
-RUN adduser --disabled-password --gecos '' vivado && \
+RUN addgroup --gid ${GROUP_ID} vivado
+RUN useradd --password '' --uid ${USER_ID} --gid ${GROUP_ID} --no-log-init vivado && \
   usermod -aG sudo vivado && \
   echo "vivado ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
