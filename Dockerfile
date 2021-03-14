@@ -75,7 +75,7 @@ RUN locale-gen en_US.UTF-8 && update-locale
 
 #make a Vivado user
 RUN addgroup --gid ${GROUP_ID} vivado
-RUN useradd --password '' --uid ${USER_ID} --gid ${GROUP_ID} --no-log-init vivado && \
+RUN useradd --create-home --password '' --uid ${USER_ID} --gid ${GROUP_ID} --no-log-init vivado && \
   usermod -aG sudo vivado && \
   echo "vivado ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
