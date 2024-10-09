@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 MAINTAINER z4yx <z4yx@users.noreply.github.com>
 
@@ -28,7 +28,7 @@ RUN apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get install -y -q \
   wget \
   socat \
   gcc-multilib \
-  libidn11 \
+  #libidn11 \
   libsdl1.2-dev \
   libglib2.0-dev \
   lib32z1-dev \
@@ -55,7 +55,7 @@ RUN apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get install -y -q \
   rsync \
   bc \
   u-boot-tools \
-  python \
+  python3 \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 

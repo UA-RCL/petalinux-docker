@@ -24,12 +24,13 @@ expect {
     timeout { send "q"; sleep 1; exp_continue}
 }
 expect {
-    "*Installing PetaLinux...*" {}
-    "* >*" {send "y\r"}
+    "*(default: /home/vivado):*" {send "$install_dir\r"}
     timeout { send "q"; sleep 1; exp_continue}
 }
 
 set timeout -1
-expect "INFO: Checking PetaLinux installer integrity..."
-expect "INFO: PetaLinux SDK has been installed"
+expect "*Installing PetaLinux SDK..."
+expect "*Setting it up..."
+expect "*Extracting xsct tarball..."
+expect "*PetaLinux SDK has been successfully set up and is ready to be used."
 #interact
